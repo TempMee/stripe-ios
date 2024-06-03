@@ -194,11 +194,7 @@ final class VerificationSheetController: VerificationSheetControllerProtocol {
         apiClient.getIdentityVerificationPage().observe(on: .main) { [weak self] result in
             guard let self = self else { return }
 
-            var verificationPageResponse = result
-            verificationPageResponse["success"]["title"] = "Done"
-            verificationPageResponse["success"]["body"] = "<p>Click Complete to move on.</p>"
-
-            self.verificationPageResponse = verificationPageResponse
+            self.verificationPageResponse = result
 
             if case .success(let verificationPage) = result {
                 self.startLoadingMLModels(from: verificationPage)
