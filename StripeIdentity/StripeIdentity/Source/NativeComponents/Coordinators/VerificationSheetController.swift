@@ -193,7 +193,9 @@ final class VerificationSheetController: VerificationSheetControllerProtocol {
         // Only update `verificationPageResponse` on main
         apiClient.getIdentityVerificationPage().observe(on: .main) { [weak self] result in
             guard let self = self else { return }
+
             self.verificationPageResponse = result
+
             if case .success(let verificationPage) = result {
                 self.startLoadingMLModels(from: verificationPage)
                 self.isVerificationPageSubmitted = verificationPage.submitted

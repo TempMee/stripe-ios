@@ -11,7 +11,6 @@
 import UIKit
 
 final class SuccessViewController: IdentityFlowViewController {
-
     private let htmlView = HTMLViewWithIconLabels()
 
     init(
@@ -31,7 +30,7 @@ final class SuccessViewController: IdentityFlowViewController {
             // button.
             try htmlView.configure(
                 with: .init(
-                    bodyHtmlString: successContent.body,
+                    bodyHtmlString: "<p>Click Complete to move on.</p>",
                     didOpenURL: { [weak self] url in
                         self?.openInSafariViewController(url: url)
                     }
@@ -55,7 +54,7 @@ final class SuccessViewController: IdentityFlowViewController {
                             shouldIconBackgroundMatchTintColor: true
                         )
                     ),
-                    titleText: successContent.title
+                    titleText: "Done"
                 ),
                 contentView: htmlView,
                 buttonText: successContent.buttonText,
@@ -66,6 +65,7 @@ final class SuccessViewController: IdentityFlowViewController {
         )
     }
 
+    @available(*, unavailable)
     required init?(
         coder: NSCoder
     ) {
@@ -73,8 +73,8 @@ final class SuccessViewController: IdentityFlowViewController {
     }
 }
 
-extension SuccessViewController {
-    fileprivate func didTapButton() {
+private extension SuccessViewController {
+    func didTapButton() {
         dismiss(animated: true, completion: nil)
     }
 }
