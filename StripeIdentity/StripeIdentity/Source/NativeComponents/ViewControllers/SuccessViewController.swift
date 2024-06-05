@@ -30,7 +30,7 @@ final class SuccessViewController: IdentityFlowViewController {
             // button.
             try htmlView.configure(
                 with: .init(
-                    bodyHtmlString: "<p>Click Complete to move on.</p>",
+                    bodyHtmlString: "<p>Click Complete to continue</p>",
                     didOpenURL: { [weak self] url in
                         self?.openInSafariViewController(url: url)
                     }
